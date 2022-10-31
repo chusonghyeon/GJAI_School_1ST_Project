@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>삶과 건강을 it다.</title>
+        <link rel="stylesheet" href="{{url_for('static', filename = 'result_page.css')}}">
+    </head>
+    <!--body-->
+    <body>
+    <div class="container">
+        <!--header-->
+        <header>
+            <h1 class="Logo"><a href="{{url_for('main')}}"><img src="{{url_for('static', filename = './img/it로고.png')}}" alt=""></a></h1>
+            <nav>
+                <ul class="head-btn">
+                    <li class="middle-menu"><a href="#news">회사소개</a></li>
+                    <li class="middle-menu"><a href="{{url_for('test')}}">질병예측검사</a></li>
+                    <li class="middle-menu"><a href="https://www.kdca.go.kr/index.es?sid=a2">건강뉴스</a></li>
+                </ul>
+                <input placeholder="Search" autocomplete="on" type="search" class="search">
+            </nav>
+            <ul>
+                <li class="right-menu"><img src="{{url_for('static', filename = './img/검색아이콘.png')}}" id="search"></li>
+            </ul>
+        </header>
+        <!-- result page -->
+        <main id="main" role="main">
+            <div class="big-title">
+                <div class="header-text">
+                    {%if All_disease + another_feature >=3%}
+                    <h1>당신의 건강이 위험합니다!</h1>
+                    <h3>가까운 병원에서 건강검진을 받아보세요!</h3>
+                    {%else%}
+                    <h1>당신을 슈퍼맨으로 임명합니다.</h1>
+                    <h3>그대의 노력에 찬사를 보냅니다!...</h3>
+                    {%endif%}
+                </div>
+            </div>
+            <article class="main-content">
+                <!--HD section-->
+                <section class="HeartDisease" id="section">
+                    {%if HD_data == 1 or dif_heartdisease == 1%}
+                    <button style="background-color: #fa8181;"class="hd" id="hover-box">심혈관질환</button>
+                    <div class="hd-div box">
+                        <div class="flex-div">
+                            <div class="text-div">
+                                <ol>
+                                    <div class="top-content">
+                                        <h2 class="big-txt">🫀심혈관질환이란?</h2>
+                                        <h3 class="big-txt">심장기관과 혈관기관등 모든 순환기계통에 발생하는 질병.</h3><br>
+                                    </div>
+                                    <div class="bottom-content">
+                                        <p>※ 심혈관질환의 증상</p><br>
+                                        <li>- 협심증 : 심장근육의 펌프 작용을 위해 필요한 에너지를 공급하는 관상동맥이<br>막히게 되면서 혈액의 흐름이 적어져 생기는 증상.</li>
+                                        <li>- 동맥경화증 : 혈관에 지방, 콜레스테롤이 생겨 좁아지고 탄력을 잃는 일종의<br> 노화 현상으로 나타나는 증상.</li>
+                                        <li>- 심부전 : 심장에서 전신에 보내는 펌프작용이 저하되어 필요한 양의 혈액공급이<br> 불안정해지는 증상</li><br>
+                                        <p>※ 심혈관 질환의 공통적인 전조 증상</p><br>
+                                        <li>- 가슴(심장, 흉골 뒤쪽) 에 쥐어짜는듯 하고 뻐근한 통증</li>
+                                        <li>- 잦은 기침 : 마른 기침이며 잠자는 중에 갑자기 나타난다는 특징이 있음</li>
+                                        <li>- 체중 증가 : 발이나 발목, 종아리가 붓거나 체중이 급격히 증가하는 경우.<br>심장이 몸에 필요한 만큼의 혈액을 보내지 못하는 것.</li>
+                                        <li>- 반복되는 빈혈 증상 : 아침에 일어날 때나 장시간 서 있을 때 등 갑자기 매스껍고<br> 어지러워 힘이 빠지는 경우.</li>
+                                    </div>
+                                </ol>
+                            </div>
+                            <div class="img-div">
+                                <div class="active-prevent">
+                                    <h2 class="big-title">심혈관질환 예방을 위해 지금바로 실천 가능한 대표적인 3가지</h2>
+                                    <div class="ac-pre-1">
+                                        <div class="empty-div">
+                                        </div>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/등푸른생선.png')}}">
+                                        </div>
+                                        <span>
+                                            1. 오늘 저녁은 등푸른 생선 후식은 과일!<br>
+                                            (단백질, 오메가3, 지방산 풍부, 과일은 비타민)
+                                        </span>
+                                    </div>
+                                    <div class="ac-pre-2">
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/걷기.png')}}">
+                                        </div>
+                                        <span>
+                                            2. 두 정거장 전에 내려서 가벼운 걷기운동!<br>
+                                            (가벼운 유산소운동은 심장의 혈액순환 촉진)
+                                        </span>
+                                    </div>
+                                    <div class="ac-pre-3">
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/물.png')}}">
+                                        </div>
+                                        <span>
+                                            3. 물마시는 습관을 만들자<br>
+                                            (묽은 혈액과 노폐물 제거를 위해 수분은 조금씩 자주 마시기)
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="dont">
+                                    <h2 class="big-title">심혈관질병을 예방하기 위해 하지 말아야할 대표적인 3가지</h2>
+                                    <div class="dont-1">
+                                        <span>
+                                            - 아침식사 거르지 않기<br>
+                                            (아침을 거르면 혈당이 오르내리고 혈액 속 중성지방 증가)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/국밥 아침식사.png')}}" class="dont-img-1">
+                                        </div>
+                                    </div>
+                                    <div class="dont-2">
+                                        <span>
+                                            - 지방 부위가 많은 육류,동물성 지방 피하기<br>
+                                            (동물성 지방은 콜레스테롤 수치를 빠르게 증가시킴)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/삼겹살.png')}}" class="dont-img-2">
+                                        </div>
+                                    </div>
+                                    <div class="dont-3">
+                                        <span>
+                                            - 충분한 수면시간, 낮잠은 짧게<br>
+                                            (수면부족은 혈압상승의 원인, 긴 낮잠은 오히려 위험을 높인다.)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/수면.png')}}" class="dont-img-3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%else%}
+                    <button style="background-color: #4DA54D;" class="hd" id="hover-box">심혈관질환</button>
+                    <div class="hd-div box">
+                        <div class="flex-div">
+                            <div class="text-div">
+                                <ol>
+                                    <div class="top-content">
+                                        <h2 class="big-txt">🫀심혈관질환이란?</h2>
+                                        <h3 class="big-txt">심장기관과 혈관기관등 모든 순환기계통에 발생하는 질병.</h3><br>
+                                    </div>
+                                    <div class="bottom-content">
+                                        <p>※ 심혈관질환의 증상</p><br>
+                                        <li>- 협심증 : 심장근육의 펌프 작용을 위해 필요한 에너지를 공급하는 관상동맥이<br>막히게 되면서 혈액의 흐름이 적어져 생기는 증상.</li>
+                                        <li>- 동맥경화증 : 혈관에 지방, 콜레스테롤이 생겨 좁아지고 탄력을 잃는 일종의<br> 노화 현상으로 나타나는 증상.</li>
+                                        <li>- 심부전 : 심장에서 전신에 보내는 펌프작용이 저하되어 필요한 양의 혈액공급이<br> 불안정해지는 증상</li><br>
+                                        <p>※ 심혈관 질환의 공통적인 전조 증상</p><br>
+                                        <li>- 가슴(심장, 흉골 뒤쪽) 에 쥐어짜는듯 하고 뻐근한 통증</li>
+                                        <li>- 잦은 기침 : 마른 기침이며 잠자는 중에 갑자기 나타난다는 특징이 있음</li>
+                                        <li>- 체중 증가 : 발이나 발목, 종아리가 붓거나 체중이 급격히 증가하는 경우.<br>심장이 몸에 필요한 만큼의 혈액을 보내지 못하는 것.</li>
+                                        <li>- 반복되는 빈혈 증상 : 아침에 일어날 때나 장시간 서 있을 때 등 갑자기 매스껍고<br> 어지러워 힘이 빠지는 경우.</li>
+                                    </div>
+                                </ol>
+                            </div>
+                            <div class="img-div2">
+                                <div class="doit">
+                                    <div class="rest">
+                                        <p>지금까지 건강을 위해 고생한 당신. 하루는 쉬어도 좋아요.</p>
+                                    </div>
+                                    <img class="rest-img" src="{{url_for('static', filename = './img/stake.jpg')}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endif%}
+                </section>
+                <!--stroke section-->
+                <section class="Stroke" id="section">
+                    {%if ST_data == 1 or dif_stroke== 1%}
+                    <button style="background-color: #fa8181;" class="st" id="hover-box">뇌졸중</button>
+                    <div class="st-div box">
+                        <div class="flex-div">
+                            <div class="text-div">
+                                <ol>
+                                    <div class="top-content">
+                                        <h2 class="big-txt">🧠뇌졸중이란?</h2>
+                                        <h3 class="big-txt">뇌의 혈관이 좁아지거나 막히거나 결국 터져 일어나는 신경학적 증상.</h3><br>
+                                    </div>
+                                    <div class="bottom-content">
+                                        <p>※ 뇌졸중의 원인</p>
+                                        <br>뇌졸중의 흔한 원인은 혈전이 생겨서 혈관이 점차 좁아져 혈관 내 혈류가 줄어들게<br>
+                                        되는데, 더 진행되면 혈관이 아예 막혀서 뇌 조직으로 혈액 공급이<br>
+                                        차단되고 뇌에 손상이 오게 되어 발생하게 됩니다.</li>
+                                        <li>다른 원인으로는 뇌에 있는 혈관이 터져서 발생하는 것을 뇌출혈이라고 합니다.</li><br>
+                                        <p>※ 뇌졸중의 전조 증상</p><br>
+                                        <li>- 두통과 구토 : 뇌압이 높아지면서 머리를 때리는 듯한 두통이 자주 발생하는 경우</li>
+                                        <li>- 둔한 감각, 마비증상 : 가볍지 않은 어지럼증과 함께 한쪽 팔다리의 감각이<br>
+                                        손실되거나 심하게는 마비가 동반되어 나타나는 경우</li>
+                                        <li>- 언어적 이상 증세 : 실어증 또는 얼굴 근육의 운동을 담당하는 안면 신경이<br>
+                                        마비되어 입이 한쪽으로 올라가거나 눈이 잘 안감기는 증상</li>
+                                        <li>- 의식적 이상 증세 : 수면 후에 일어날 때 잘 일어나지 못하거나 엉뚱한 행동<br>
+                                        을 하거나 정신이 흐릿한 것</li>
+                                        <li>- 시각적 이상 증세 : 갑자기 한쪽 눈, 한쪽 방향이 보이지 않는 경우, 혹은 <br>
+                                        물건이 두개로 보이는 경우</li>
+                                    </div>
+                                </ol>
+                            </div>
+                            <div class="img-div">
+                                <div class="active-prevent">
+                                    <h2 class="big-title">뇌졸중의 예방을 위해 지금바로 실천 가능한 대표적인 3가지</h2>
+                                    <div class="ac-pre-1">
+                                        <div class="empty-div">
+                                        </div>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/규칙적인 식습관.png')}}">
+                                        </div>
+                                        <span>
+                                            1. 규칙적인 식습관과 배변습관.<br>
+                                            (불규칙적인 식습관, 배변습관은 힘을 세게 줄 수 있으며 뇌에 압력이 가게 되어 위험.)
+                                        </span>
+                                    </div>
+                                    <div class="ac-pre-2">
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/마늘.png')}}">
+                                        </div>
+                                        <span>
+                                            2. 한국 대표 향신료 마늘 섭취하기!<br>
+                                            (마늘의 풍부한 알리신 성분은 활성산소를 제거하는데 효과적인 도움을 준다.)
+                                        </span>
+                                    </div>
+                                    <div class="ac-pre-3">
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/사과.png')}}">
+                                        </div>
+                                        <span>
+                                            3. 섬유질 급원 과일 사과<br>
+                                            (뇌졸중 예방에 효과적인 섬유질과 칼륨 풍부, 체내에 쌓인 나트륨 배출 효과 탁월.)
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="dont">
+                                    <h2 class="big-title">뇌졸중을 예방하기 위해 하지 말아야할 대표적인 3가지</h2>
+                                    <div class="dont-1">
+                                        <span>
+                                            - 흡연은 높은 위험인자!<br>
+                                            (흡연은 뇌졸중에는 특히 위험성을 높이는 위험인자입니다.)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/금연.png')}}" class="dont-img-1">
+                                        </div>
+                                    </div>
+                                    <div class="dont-2">
+                                        <span>
+                                            - 나트륨이 높은 음식 피하기<br>
+                                            (뇌졸중의 주요 원인 중 하나인 고혈압인 만큼 혈압을 <br>
+                                            높이는 나트륨 함량이 높은 음식 자제하기.)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/게장.png')}}" class="dont-img-2">
+                                        </div>
+                                    </div>
+                                    <div class="dont-3">
+                                        <span>
+                                            - 인스턴트 식품 피하기<br>
+                                            (인스턴트, 튀김 등 콜레스테롤, 중성지방이 많은 음식은 혈전을<br>
+                                            생성, 혈관을 막히게 하기 때문에 섭취를 자제하기)     
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/인스턴트.png')}}" class="dont-img-3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%else%}
+                    <button style="background-color: #4DA54D;" class="st" id="hover-box">뇌졸중</button>
+                    <div class="st-div box">
+                        <div class="flex-div">
+                            <div class="text-div">
+                                <ol>
+                                    <div class="top-content">
+                                        <h2 class="big-txt">🧠뇌졸중이란?</h2>
+                                        <h3 class="big-txt">뇌의 혈관이 좁아지거나 막히거나 결국 터져 일어나는 신경학적 증상.</h3><br>
+                                    </div>
+                                    <div class="bottom-content">
+                                        <p>※ 뇌졸중의 원인</p>
+                                        <br>뇌졸중의 흔한 원인은 혈전이 생겨서 혈관이 점차 좁아져 혈관 내 혈류가 줄어들게<br>
+                                        되는데, 더 진행되면 혈관이 아예 막혀서 뇌 조직으로 혈액 공급이<br>
+                                        차단되고 뇌에 손상이 오게 되어 발생하게 됩니다.</li>
+                                        <li>다른 원인으로는 뇌에 있는 혈관이 터져서 발생하는 것을 뇌출혈이라고 합니다.</li><br>
+                                        <p>※ 뇌졸중의 전조 증상</p><br>
+                                        <li>- 두통과 구토 : 뇌압이 높아지면서 머리를 때리는 듯한 두통이 자주 발생하는 경우</li>
+                                        <li>- 둔한 감각, 마비증상 : 가볍지 않은 어지럼증과 함께 한쪽 팔다리의 감각이<br>
+                                        손실되거나 심하게는 마비가 동반되어 나타나는 경우</li>
+                                        <li>- 언어적 이상 증세 : 실어증 또는 얼굴 근육의 운동을 담당하는 안면 신경이<br>
+                                        마비되어 입이 한쪽으로 올라가거나 눈이 잘 안감기는 증상</li>
+                                        <li>- 의식적 이상 증세 : 수면 후에 일어날 때 잘 일어나지 못하거나 엉뚱한 행동<br>
+                                        을 하거나 정신이 흐릿한 것</li>
+                                        <li>- 시각적 이상 증세 : 갑자기 한쪽 눈, 한쪽 방향이 보이지 않는 경우, 혹은 <br>
+                                        물건이 두개로 보이는 경우</li>
+                                    </div>
+                                </ol>
+                            </div>
+                            <div class="img-div2">
+                                <div class="doit">
+                                    <div class="rest">
+                                        <p class="txt-space2">절제한 나를 위해 오늘은 입에 기름칠을!...</p>
+                                    </div>
+                                    <img class="rest-img" src="{{url_for('static', filename = './img/hamburger.jpg')}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endif%}
+                </section>
+                <!--Diab section-->
+                <section class="Diabetic" id="section">
+                    {%if DI_data == 1 or dif_diebtic  == 1%}
+                    <button style="background-color: #fa8181;" class="di" id="hover-box">당뇨병</button>
+                    <span class="ex-txt">버튼을 눌러보세요!</span>
+                    <div class="di-div box">
+                        <div class="flex-div">
+                            <div class="text-div">
+                                <ol>
+                                    <div class="top-content">
+                                        <p class="top-content">
+                                        <h2 class="big-txt">🍫당뇨병이란?</h2>
+                                        <h3>혈액 중의 당분을 세포 내로 흡수해서 혈당을 낮추는 역할을 하는<br>
+                                        생체 호르몬인 인슐린의 분비 또는 수용에 장애가 발생, 혈당치가 높아지는 대사질환.</h3><br>
+                                        <p>당뇨병은 오만 가지 합병증이 다 생긴다는 만악의 근원인 질병입니다.</p>
+                                        <p>당뇨병 자체의 완치법은 아직 없기 때문에 예방과 관리를 철저하게 해야합니다.</p><br>
+                                    </div>
+                                    <div class="bottom-content">
+                                        <p>※ 당뇨병의 전조 증상.</p><br>
+                                        <li>- 갈증 : 혈당이 높아지면서 갈증이 나며 소변을 보는 횟수가 늘어납니다.</li>
+                                        <li>- 배고픔 : 혈당이 올라가면 몸속에서 포도당을 조절하려 하는데 이러한 조절작용으로<br>
+                                        몸이 떨리고 배고픔 증상이 나타나며 탄수화물이나 당분이 많이 든 음식을 찾게 됩니다.</li>
+                                        <li>- 체중 감소 : 인슐린 호르몬이 에너지로 사용 될 수 있는 포도당을 세포로 보내는 기능을<br>
+                                        제대로 하지 못하여 살이 빠지게 됩니다.</li>
+                                        <li>- 잦은 쥐 : 혈당이 높아지고 인슐린의 저항성이 생기면 가장 먼저 혈액순환에 문제가<br>
+                                        생기게 되며 세포에 영양과 산소공급을 못해 손발의 저림, 떨림, 잦은 쥐가 생기게 됩니다.</li>
+                                        <li>- 피부, 입의 건조증 : 신체의 채액이 부족해지며 입과 피부가 건조해지고 몸 곳곳에 <br>
+                                        가려움증이 심해지기도 합니다.</li>
+                                    </div>
+                                </ol>
+                            </div>
+                            <div class="img-div">
+                                <div class="active-prevent">
+                                    <h2 class="big-title">당뇨병 예방을 위해 지금바로 실천 가능한 대표적인 3가지</h2>
+                                    <div class="ac-pre-1">
+                                        <div class="empty-div">
+                                        </div>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/오이토마토.png')}}">
+                                        </div>
+                                        <span>
+                                            1. 오이 or 토마토 섭취하기<br>
+                                            (오이는 다량의 수분, 적은 칼로리로 형당 수치를 낮춰주고 토마토는 식이섬유가 풍부해<br>
+                                            콜레스테롤을 낮추고 소화를 촉진시키는 슈퍼푸드입니다.)
+                                        </span>
+                                    </div>
+                                    <div class="ac-pre-2">
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/두부.png')}}">
+                                        </div>
+                                        <span>
+                                            2.흰쌀밥 대신 잡곡밥과 두부!<br>
+                                            (잡곡밥은 면역력 강화, 항암 당뇨병 개선 효과, 두부는 다량의 단백질로 근력, 면역력 향상)
+                                        </span>
+                                    </div>
+                                    <div class="ac-pre-3">
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/스트레스.png')}}">
+                                        </div>
+                                        <span>
+                                            3. 스트레스 받지 않기<br>
+                                            (스트레스는 만병의 근원이라고 하는 것처럼 자율신경계의 기능을 악화, 당뇨병 원인 제공)
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="dont">
+                                    <h2 class="big-title">당뇨병을 예방하기 위해 하지 말아야할 대표적인 3가지</h2>
+                                    <div class="dont-1">
+                                        <span>
+                                            - 음주 습관<br>
+                                            (알코올은 1~2잔만으로 100kcal 이상을 섭취할 수 있어 비만형 당뇨환자에게는 특히 위험.)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/음주.png')}}" class="dont-img-1">
+                                        </div>
+                                    </div>
+                                    <div class="dont-2">
+                                        <span>
+                                            - 초콜릿, 젤리 금지!<br>
+                                            (젤리, 양갱 등 다량의 당 함유로 혈당치가 크게 상승, 초콜릿은 당, 지방이 모두<br>
+                                            포함되어 당뇨병에 더욱 좋지 않은 음식입니다.)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/초콜릿.png')}}" class="dont-img-2">
+                                        </div>
+                                    </div>
+                                    <div class="dont-3">
+                                        <span>
+                                            - 과식 또는 급하게 먹는 습관<br>
+                                            (과식을 하거나 급하게 먹는 경우 췌장은 급상승한 혈당을 낮추기 위해 대량의 인슐린<br>
+                                            생성, 혈당 조절의 어려움)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/과식.png')}}" class="dont-img-3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%else%}
+                    <button style="background-color: #4DA54D;" class="di" id="hover-box">당뇨병</button>
+                    <div class="di-div box">
+                        <div class="flex-div">
+                            <div class="text-div">
+                                <ol>
+                                    <div class="top-content">
+                                        <p class="top-content">
+                                        <h2 class="big-txt">🍫당뇨병이란?</h2>
+                                        <h3>혈액 중의 당분을 세포 내로 흡수해서 혈당을 낮추는 역할을 하는<br>
+                                        생체 호르몬인 인슐린의 분비 또는 수용에 장애가 발생, 혈당치가 높아지는 대사질환.</h3><br>
+                                        <p>당뇨병은 오만 가지 합병증이 다 생긴다는 만악의 근원인 질병입니다.</p>
+                                        <p>당뇨병 자체의 완치법은 아직 없기 때문에 예방과 관리를 철저하게 해야합니다.</p><br>
+                                    </div>
+                                    <div class="bottom-content">
+                                        <p>※ 당뇨병의 전조 증상.</p><br>
+                                        <li>- 갈증 : 혈당이 높아지면서 갈증이 나며 소변을 보는 횟수가 늘어납니다.</li>
+                                        <li>- 배고픔 : 혈당이 올라가면 몸속에서 포도당을 조절하려 하는데 이러한 조절작용으로<br>
+                                        몸이 떨리고 배고픔 증상이 나타나며 탄수화물이나 당분이 많이 든 음식을 찾게 됩니다.</li>
+                                        <li>- 체중 감소 : 인슐린 호르몬이 에너지로 사용 될 수 있는 포도당을 세포로 보내는 기능을<br>
+                                        제대로 하지 못하여 살이 빠지게 됩니다.</li>
+                                        <li>- 잦은 쥐 : 혈당이 높아지고 인슐린의 저항성이 생기면 가장 먼저 혈액순환에 문제가<br>
+                                        생기게 되며 세포에 영양과 산소공급을 못해 손발의 저림, 떨림, 잦은 쥐가 생기게 됩니다.</li>
+                                        <li>- 피부, 입의 건조증 : 신체의 채액이 부족해지며 입과 피부가 건조해지고 몸 곳곳에 <br>
+                                        가려움증이 심해지기도 합니다.</li>
+                                    </div>
+                                </ol>
+                            </div>
+                            <div class="img-div2">
+                                <div class="doit">
+                                    <div class="rest">
+                                        <p class="txt-space3">하루쯤은 괜찮잖아요?</p>
+                                    </div>
+                                    <img class="rest-img" src="{{url_for('static', filename = './img/chicken.jpg')}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endif%}
+                </section>
+                <!--Asthma section-->
+                <section class="Asthma" id="section">
+                    {%if AS_data == 1 or dif_Asthma == 1%}
+                    <button style="background-color: #fa8181;" class="as" id="hover-box">천식</button>
+                    <div class="as-div box">
+                        <div class="flex-div">
+                            <div class="text-div">
+                                <ol>
+                                    <div class="top-content">
+                                        <h2 class="big-txt">🫁천식이란?</h2>
+                                        <h3 class="big-txt">가변적이고 재발하는 증상, 가역적인 기도 폐쇄,<br> 기도 과민성 증가를 특징으로 하는 만성 기도 염증 질환.</h3>
+                                    </div>
+                                    <div class="bottom-content">
+                                        <p>※ 천식의 원인</p><br>
+
+                                        <li>폐 기관지가 예민해지고 좁아지게 되면서 숨을 쉬기 어려워지고</li>
+                                        <li>기관지에서 알레르기 염증반응이 나타나는 병입니다.</li>
+                                        <li>천식은 유전적 원인과 환경적 원인이 주가 됩니다.</li>
+                                        <li>1년에 약 100만 명 이상이 천식 진단.</li><br>
+
+                                        <p>※ 천식의 전조 증상</p><br>
+                                        <li>- 1주일 이상 지속되는 감기, 기침 : 감기가 1주일이 넘어도 낫지<br>
+                                        않고 심한 기침, 가래를 동반하는 경우.</li>
+                                        <li>- 불면증, 비정상적인 산소공급 : 기관지 명역력이 약화 되어서 금방<br>
+                                        잠들기 힘들고 중간에 깨는 현상이 빈번하며 정상적인 산소 공급이<br>
+                                    안되어서 안색이 나빠집니다.</li>
+                                        <li>- 천명 : 기관지에 염증이 생겨서 호흡 소리에 작게 쌕쌕거리는 소리가<br>
+                                        들리는 경우</li>
+                                        <li>코로나로 인한 롱코비드 : 격리 해제 이후 기침, 두통, 근육통, 전신피로<br>
+                                        드잉 오래 간다면 천식과 비슷한 증상인 롱 코비드 의심</li>
+                                    </div>
+                                </ol>
+                            </div>
+                            <div class="img-div">
+                                <div class="active-prevent">
+                                    <h2 class="big-title">천식을 예방을 위해 지금바로 실천 가능한 대표적인 3가지</h2>
+                                    <div class="ac-pre-1">
+                                        <div class="empty-div">
+                                        </div>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/연어.png')}}">
+                                        </div>
+                                        <span>
+                                            1. 천식에 좋은 연어!<br>
+                                            (혈중 비타민D의 농도가 낮으면 증상이 심해진다는 연구결과.<br>
+                                            비타민D가 풍부한 연어 섭취 권장)
+                                        </span>
+                                    </div>
+                                    <div class="ac-pre-2">
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/녹색채소.png')}}">
+                                        </div>
+                                        <span>
+                                            2. 녹책 채소를 많이 먹자!<br>
+                                            (녹색 채소는 미네랄과 기타화합물이 다양하게 포함. 몸에서 필요한<br>
+                                            엽산 제공, 비타민D 풍부, 염증 억제)
+                                        </span>
+                                    </div>
+                                    <div class="ac-pre-3">
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/청소.png')}}">
+                                        </div>
+                                        <span>
+                                            3. 집가서 바로 청소하기<br>
+                                            (천식의 대표 요인중 하나인 건강 및 위생. 청소, 침구류 관리 철저!)
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="dont">
+                                    <h2 class="big-title">천식을 예방하기 위해 하지 말아야할 대표적인 3가지</h2>
+                                    <div class="dont-1">
+                                        <span>
+                                            - 탄산음료 피하기(마늘, 양파, 튀긴음식 등..)<br>
+                                            (위에서 가스를 일으키는 음식은 천식에 좋지 않기 때문에 피하기.)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/콜라.png')}}" class="dont-img-1">
+                                        </div>
+                                    </div>
+                                    <div class="dont-2">
+                                        <span>
+                                            - 천식의 대표 원인 중 하나 흡연!<br>
+                                            천식 증상이 보인다면 필수로 끊어야하는 호흡기에 많은 영향을 주는 흡연!)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/금연.png')}}" class="dont-img-2">
+                                        </div>
+                                    </div>
+                                    <div class="dont-3">
+                                        <span>
+                                            - 말린과일 또는 과일음료,농축액 피하기<br>
+                                            (음식이 상하고 색이 변하는 것을 막기 위해 사용하는 염류인 아황산염은<br>
+                                            천식환자에게 악영향을 준다.)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/말린과일.png')}}" class="dont-img-3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%else%}
+                    <button style="background-color: #4DA54D;" class="as" id="hover-box">천식</button>
+                    <div class="as-div box">
+                        <div class="flex-div">
+                            <div class="text-div">
+                                <ol>
+                                    <div class="top-content">
+                                        <h2 class="big-txt">🫁천식이란?</h2>
+                                        <h3 class="big-txt">가변적이고 재발하는 증상, 가역적인 기도 폐쇄,<br> 기도 과민성 증가를 특징으로 하는 만성 기도 염증 질환.</h3>
+                                    </div>
+                                    <div class="bottom-content">
+                                        <p>※ 천식의 원인</p><br>
+
+                                        <li>폐 기관지가 예민해지고 좁아지게 되면서 숨을 쉬기 어려워지고</li>
+                                        <li>기관지에서 알레르기 염증반응이 나타나는 병입니다.</li>
+                                        <li>천식은 유전적 원인과 환경적 원인이 주가 됩니다.</li>
+                                        <li>1년에 약 100만 명 이상이 천식 진단.</li><br>
+
+                                        <p>※ 천식의 전조 증상</p><br>
+                                        <li>- 1주일 이상 지속되는 감기, 기침 : 감기가 1주일이 넘어도 낫지<br>
+                                        않고 심한 기침, 가래를 동반하는 경우.</li>
+                                        <li>- 불면증, 비정상적인 산소공급 : 기관지 명역력이 약화 되어서 금방<br>
+                                        잠들기 힘들고 중간에 깨는 현상이 빈번하며 정상적인 산소 공급이<br>
+                                    안되어서 안색이 나빠집니다.</li>
+                                        <li>- 천명 : 기관지에 염증이 생겨서 호흡 소리에 작게 쌕쌕거리는 소리가<br>
+                                        들리는 경우</li>
+                                        <li>코로나로 인한 롱코비드 : 격리 해제 이후 기침, 두통, 근육통, 전신피로<br>
+                                        드잉 오래 간다면 천식과 비슷한 증상인 롱 코비드 의심</li>
+                                    </div>
+                                </ol>
+                            </div>
+                            <div class="img-div2">
+                                <div class="doit">
+                                    <div class="rest">
+                                        <p class="txt-space4">친구야, 오늘저녁은 치팅데이다.</p>
+                                    </div>
+                                    <img class="rest-img" src="{{url_for('static', filename = './img/pizza.jpg')}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endif%}
+                </section>
+                <!--KD section-->
+                <section class="KidneyDisease" id="section">
+                    {%if KD_data == 1 or dif_kidneydisease == 1%}
+                    <button style="background-color: #fa8181;" class="kd" id="hover-box">신장질환</button>
+                    <div class="kd-div box">
+                        <div class="flex-div">
+                            <div class="text-div">
+                                <ol>
+                                    <div class="top-content">
+                                        <h2 class="big-txt">🧬신장실환이란?</h2>
+                                        <h3 class="big-txt">신장 기능이 제 역할을 하지 못하고 장애를 가질 때 신부전증이라고 부릅니다.</h3>
+                                        <h3>신장 기능이 저하되면 체내의 과다수분과 노폐물을 배설하지 못하게 됩니다.</h3><br>
+                                        <li>고혈압이 계속되면 신장의 세동맥은 고압에 의한 긴장 때문에 혈관이 궅어지고<br>
+                                        내각도 좁아져 혈액을 충분히 유입하지 못하며 신장의 기능이 저하되어 <br>
+                                        신부전 및 요독증을 일으킵니다.</li>
+                                    </div>
+                                    <div class="bottom-content">
+                                        <p>※ 신장질환의 전조 증상</p><br>
+                                        <li>- 손, 발에 부종 : 신장에 이상이 생겨서 체액 균형이 깨져 채액이 과도하게<br>
+                                        늘어나는 경우 부종이 발생 </li>
+                                        <li>- 거품뇨 발생 : 소변에 단백질이 증가하면 거품이 평소보다 많이 일면서<br>
+                                        잘 꺼지지 않는 경우가 반복된다면 단백뇨 의심.</li>
+                                        <li>-혈뇨 : 면역학적 염증 반응 신장염 증상으로 소변에 피가 섞여 혈뇨 <br>
+                                        신장 이상 증상이 나타납니다.</li>
+                                    </div>
+                                </ol>
+                            </div>
+                            <div class="img-div">
+                                <div class="active-prevent">
+                                    <h2 class="big-title">신장질환 예방을 위해 지금바로 실천 가능한 대표적인 3가지</h2>
+                                    <div class="ac-pre-1">
+                                        <div class="empty-div">
+                                        </div>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/빨간피망.png')}}">
+                                        </div>
+                                        <span>
+                                            1.짱구가 싫어하는 빨간피망 많이 먹기<br>
+                                            (빨간 피망은 칼륨이 적고 비타민, 섬유질, 항산화성분인 리코펜이 다량 함유<br>
+                                            면역력 강화, 신장기능 향상)
+                                        </span>
+                                    </div>
+                                    <div class="ac-pre-2">
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/올리브 오일.png')}}">
+                                        </div>
+                                        <span>
+                                            2. 올리브 오일 섭취!<br>
+                                            (음식에 첨가되는 올리브 오일은 나트륨, 칼륨이 적고 불포화 지방산이<br>
+                                            혈액 순환, 신장 건강을 개선, 유지하는데 도움을 줌.)
+                                        </span>
+                                    </div>
+                                    <div class="ac-pre-3">
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/블루베리.png')}}">
+                                        </div>
+                                        <span>
+                                            3. 베리 종류의 과일 베리베리 먹기<br>
+                                            (블루베리는 안토시아닌 다량함유, 항산화 작용 탁월, 세균 증식 억제<br>
+                                            크렌베리, 라즈베리 , 딸기 등 베리 종류 모두 신장 건강에 좋음.)
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="dont">
+                                    <h2 class="big-title">신장질환을 예방하기 위해 하지 말아야할 대표적인 3가지</h2>
+                                    <div class="dont-1">
+                                        <span>
+                                            - 아보카도는 넣어두기.<br>
+                                            (몸에 이로운 음식으로 알려져 있지만 신장 질환에 좋지 않은 칼륨을<br>
+                                            다량 함유하고 있다.)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/아보카도.png')}}" class="dont-img-1">
+                                        </div>
+                                    </div>
+                                    <div class="dont-2">
+                                        <span>
+                                            - 짜게먹는 습관 없애기<br>
+                                            (신장질환의 주원인은 고혈압이기 때문에 짜게 먹는 습관은 신장 기능을<br>
+                                            나쁘게 하고 혈압을 올릴 수 있어 피해야 한다.)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/게장.png')}}" class="dont-img-2">
+                                        </div>
+                                    </div>
+                                    <div class="dont-3">
+                                        <span>
+                                            - 감자, 고구마도 피하기..<br>
+                                            (감자, 고구마도 칼륨을 다량 함유. 오래 찌거나 끓인다면 칼륨 함량이<br>
+                                            낮아지지만 그래도 소량만 먹는 것을 권유)
+                                        </span>
+                                        <div>
+                                            <img src="{{url_for('static', filename = './img/감자고구마.png')}}" class="dont-img-3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%else%}
+                    <button style="background-color: #4DA54D;" class="kd" id="hover-box">신장질환</button>
+                    <div class="kd-div box">
+                        <div class="flex-div">
+                            <div class="text-div">
+                                <ol>
+                                    <div class="top-content">
+                                        <h2 class="big-txt">🧬신장실환이란?</h2>
+                                        <h3 class="big-txt">신장 기능이 제 역할을 하지 못하고 장애를 가질 때 신부전증이라고 부릅니다.</h3>
+                                        <h3>신장 기능이 저하되면 체내의 과다수분과 노폐물을 배설하지 못하게 됩니다.</h3><br>
+                                        <li>고혈압이 계속되면 신장의 세동맥은 고압에 의한 긴장 때문에 혈관이 궅어지고<br>
+                                        내각도 좁아져 혈액을 충분히 유입하지 못하며 신장의 기능이 저하되어 <br>
+                                        신부전 및 요독증을 일으킵니다.</li>
+                                    </div>
+                                    <div class="bottom-content">
+                                        <p>※ 신장질환의 전조 증상</p><br>
+                                        <li>- 손, 발에 부종 : 신장에 이상이 생겨서 체액 균형이 깨져 채액이 과도하게<br>
+                                        늘어나는 경우 부종이 발생 </li>
+                                        <li>- 거품뇨 발생 : 소변에 단백질이 증가하면 거품이 평소보다 많이 일면서<br>
+                                        잘 꺼지지 않는 경우가 반복된다면 단백뇨 의심.</li>
+                                        <li>-혈뇨 : 면역학적 염증 반응 신장염 증상으로 소변에 피가 섞여 혈뇨 <br>
+                                        신장 이상 증상이 나타납니다.</li>
+                                    </div>
+                                </ol>
+                            </div>
+                            <div class="img-div2">
+                                <div class="doit">
+                                    <div class="rest">
+                                        <p class="txt-space5">아 몰랑, 그냥 먹어 ㅋㅋ</p>
+                                    </div>
+                                    <img class="rest-img img1" src="{{url_for('static', filename = './img/돈가스.jpg')}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endif%}
+                </section>
+        </main>
+        <!-- wards game-->
+        <div class="firstsight">
+            <div class="w-game">
+                <div class="explanation">
+                    <div class="right ex"></div>
+                    <div class="near-right ex"></div>
+                    <div class="wrong ex"></div>
+                        <p class="txt a">위치와 문자 모두 맞을 시</p>
+                        <p class="txt b">문자만 맞을 시</p>
+                        <p class="txt c">위치와 문자 모두 틀렸을 시 (기회는 5번)</p>
+                        <p class="txt d">※힌트 : 한국어, 다섯글자, 맞추면 오늘 저녁은 치킨이닭!</p>
+                </div>
+                <div class="board">
+                    <h1>한번 맞춰보세요!</h1>
+                    <h3>고지혈증을 유발하는 가장 큰 요인인 이것은?</h3>
+                    <div class="board-input1">
+                        <input class="w-input1" maxlength="1">
+                        <input class="w-input1" maxlength="1">
+                        <input class="w-input1" maxlength="1">
+                        <input class="w-input1" maxlength="1">
+                        <input class="w-input1" maxlength="1">
+                    </div>
+                    <div class="board-input2">
+                        <input class="w-input2"  maxlength="1">
+                        <input class="w-input2"  maxlength="1">
+                        <input class="w-input2"  maxlength="1">
+                        <input class="w-input2"  maxlength="1">
+                        <input class="w-input2"  maxlength="1">
+                    </div>
+                    <div class="board-input3">
+                        <input class="w-input3" maxlength="1">
+                        <input class="w-input3" maxlength="1">
+                        <input class="w-input3" maxlength="1">
+                        <input class="w-input3" maxlength="1">
+                        <input class="w-input3" maxlength="1">
+                    </div>
+                    <div class="board-input4">
+                        <input class="w-input4" maxlength="1">
+                        <input class="w-input4" maxlength="1">
+                        <input class="w-input4" maxlength="1">
+                        <input class="w-input4" maxlength="1">
+                        <input class="w-input4" maxlength="1">
+                    </div>
+                    <div class="board-input5">
+                        <input class="w-input5" maxlength="1">
+                        <input class="w-input5" maxlength="1">
+                        <input class="w-input5" maxlength="1">
+                        <input class="w-input5" maxlength="1">
+                        <input class="w-input5" maxlength="1">
+                    </div>
+                    <button class="wg-submit">정답 확인!</button>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+            <div class="copyright">
+                <p>Copyright 2022 iT inc. All rights reserved. </p>
+            </div>
+            <div class="address">
+                <p>광주광역시 동구 제봉로 92 3층 Classroom10 Cloud_B반 </p>
+            </div>
+        </footer>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="{{url_for('static', filename = 'result_page.js')}}"></script>
+    </body>
+    </html>

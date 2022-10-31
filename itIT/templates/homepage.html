@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>삶과 건강을 it다.</title>
+        <link rel="stylesheet" href="{{url_for('static', filename = 'homepage.css')}}">
+    </head>
+    <!--body-->
+    <body>
+    <div class="container">
+        <!--header-->
+        <header>
+            <h1 class="Logo"><a href="{{url_for('main')}}"><img src="{{url_for('static', filename = './img/it로고.png')}}" alt=""></a></h1>
+            <nav>
+                <ul class="head-btn">
+                    <li class="middle-menu"><a href="#news">회사소개</a></li>
+                    <li class="middle-menu"><a href="{{url_for('test')}}">질병예측검사</a></li>
+                    <li class="middle-menu"><a href="https://www.kdca.go.kr/index.es?sid=a2">건강뉴스</a></li>
+                </ul>
+                <input placeholder="Search" autocomplete="on" type="search" class="search">
+            </nav>
+            <ul>
+                <li class="right-menu"><img src="{{url_for('static', filename = './img/검색아이콘.png')}}" id="search"></li>
+            </ul>
+        </header>
+            <!--첫 인상-->
+            <div class="firstsight">
+                <div>
+                    <img src="{{url_for('static', filename = './img/happyfamily.png')}}">
+                    <sapn class="en txt">Our technology benefits to the world.</sapn><br>
+                    <span class="ko txt">우리의 기술이 세상을 이롭게.</span>
+                </div>
+                <a href='https://kr.freepik.com/photos/people'>People 사진는 tirachardz - kr.freepik.com가 제작함</a>
+            </div>
+            <!--home page-->
+            <main class="main">
+                <!--페이지 디자인-->
+                <article class="introduce">
+                    <section class="middle">
+                            <span class="left-top over">우리의 삶은</span>
+                            <img src="{{url_for('static', filename = './img/shoose.jpg')}}" class="left-bottom over">
+                            <img src="{{url_for('static', filename = './img/young_woman.jpg')}}" class="middle-top over">
+                            <div class="middle-bottom over">
+                                <span>오늘도 내일도</span><br>
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;빛나고있어</span class="bottom-txt over">
+                            </div>
+                            <img src="{{url_for('static', filename = './img/family.jpg')}}" class="right-top over">
+                            <img src="{{url_for('static', filename = './img/노부부.jpg')}}" class="right-bottom over">
+                    </section>
+                </article>
+                <div>
+                    <a href="{{url_for('test')}}"><button class="test-button">나의 건강상태 확인하기</button></a>
+                </div>
+            </main>
+        <footer id="footer">
+            <div class="copyright">
+                <p>Copyright 2022 iT inc. All rights reserved. </p>
+            </div>
+            <div class="address">
+                <p>광주광역시 동구 제봉로 92 3층 Classroom10 Cloud_B반 </p>
+            </div>
+        </div>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="{{url_for('static', filename = 'homepage.js')}}"></script>
+        </body>
+    </html>
